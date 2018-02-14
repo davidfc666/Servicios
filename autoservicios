@@ -1,0 +1,25 @@
+#!/bin/bash
+# Automatización de servicios
+# Modo de uso: copia o mueve este script a /usr/bin o /usr/local/bin y ejecutarlo de esta manera:
+# Dar permisos al archivo en /usr/bin -> sudo chmod 777 autoservicios
+# autoservicios
+
+# Instalar  apache mysql php phpmyadmin coger la base de datos de github e introducira directamente a la base de datos
+# Paso 1: Actualizamos el sistema operativo
+sudo apt-get update
+# Paso 2: Instalar Apache, MySQL, PHP
+sudo apt-get install apache2 mysql-client mysql-server php7.0 libapache2-mod-php7.0
+# Paso 3: Instalar sofware adicional y necesario
+sudo apt-get install graphviz aspell php7.0-pspell php7.0-curl php7.0-gd php7.0-intl php7.0-mysql php7.0-xmlrpc php7.0-ldap php7.0-zip
+sudo service apache2 restart
+sudo apt-get install git
+sudo apt-get install nano
+sudo apt-get update
+# Paso 4: Instalar PHPMYADMIN y configuracion.
+sudo apt-get install phpmyadmin
+cd /etc/apache2
+sudo chmod 777 apache2.conf
+# El echo introduce su contenido en la ultima linea del archivo seleccionado.
+echo "include /etc/phpmyadmin/apache.conf" >> apache2.conf
+# sudo nano apache2.conf
+sudo service apache2 restart
